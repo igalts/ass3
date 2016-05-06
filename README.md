@@ -1,0 +1,89 @@
+# ass3
+---
+title: "Assignment 3"
+author: "igal tsirulnik, Yoni Elhanati"
+date: "April 11, 2016"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Gray Anatomy-dataset
+##1)
+```{r 1 name}
+library(igraph)
+
+ga.data <- read.csv('ga_edgelist.csv', header=TRUE)
+g <- graph.data.frame(ga.data, directed=FALSE)
+#i) highest closeness
+max(closeness(g))
+#ii) highest closeness
+max(betweenness(g))
+#iii) highest closeness
+max(graph.eigen(g)$vectors)
+```
+
+##2)
+```{r 2 name}
+community1 <- g
+wc <- walktrap.community(community1)
+#i)colored plot
+plot(wc, community1)
+#ii) number of cmunities: 7
+#iii) modularity value is:
+modularity(wc)
+
+
+community2 <- g
+wc <- optimal.community(community2)
+#i)colored plot
+plot(wc, community2)
+#ii) number of cmunities: 6
+#iii) modularity value is:
+modularity(wc)
+
+
+```
+
+##Krackhardt_Kite-dataset -A social network with 10 vertices and 18 edges. Krackhardt, D. Assessing the Political Landscape: Structure, Cognition, and Power in Organizations. Admin. Sci. Quart. 35, 342-369, 1990.
+##1)
+```{r 3 name}
+library(igraph)
+
+ga.data <- read.csv('Krackhardt_edgelist.csv', header=TRUE)
+g <- graph.data.frame(ga.data, directed=FALSE)
+g <- simplify(g)
+#i) highest closeness
+max(closeness(g))
+#ii) highest closeness
+max(betweenness(g))
+#iii) highest closeness
+max(graph.eigen(g)$vectors)
+```
+
+##2)
+```{r 4 name}
+community1 <- g
+wc <- walktrap.community(community1)
+#i)colored plot
+plot(wc, community1)
+#ii) number of cmunities: 3
+#iii) modularity value is:
+modularity(wc)
+
+
+community2 <- g
+wc <- optimal.community(community2)
+#i)colored plot
+plot(wc, community2)
+#ii) number of cmunities: 3
+#iii) modularity value is:
+modularity(wc)
+
+
+```
+
+
+
