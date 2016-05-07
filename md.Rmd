@@ -18,14 +18,15 @@ ga.data <- read.csv('ga_edgelist.csv', header=TRUE)
 g <- graph.data.frame(ga.data, directed=FALSE)
 #i) highest closeness
 max(closeness(g))
-#ii) highest closeness
+#ii) highest betweenness
 max(betweenness(g))
-#iii) highest closeness
+#iii) highest eigen vectors
 max(graph.eigen(g)$vectors)
 ```
 
 ##2)
 ```{r 2 name}
+#walktrap community algorithm
 community1 <- g
 wc <- walktrap.community(community1)
 #i)colored plot
@@ -34,7 +35,7 @@ plot(wc, community1)
 #iii) modularity value is:
 modularity(wc)
 
-
+#optimal community algorithm
 community2 <- g
 wc <- optimal.community(community2)
 #i)colored plot
@@ -56,9 +57,9 @@ g <- graph.data.frame(ga.data, directed=FALSE)
 g <- simplify(g)
 #i) highest closeness
 max(closeness(g))
-#ii) highest closeness
+#ii) highest betweenness
 max(betweenness(g))
-#iii) highest closeness
+#iii) highest eigen vectors
 max(graph.eigen(g)$vectors)
 ```
 
